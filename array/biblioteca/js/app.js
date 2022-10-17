@@ -158,36 +158,18 @@ const viewForPagesMayor = (cantidad, mayor) => {
 //Borrar un libro-----------------------------------
 const deleteBook = (isbn) => {
   //usando splice
-  // const index = books.findIndex((book) => {
-  //   return book.isbn === isbn;
-  // });
+  const index = books.findIndex((book) => {
+    return book.isbn === isbn;
+  });
 
-  // if (index > -1) {
-  //   let validar = confirm(`Desea eliminar el libro ${books[index].title}?`);
-  //   if (validar) {
-  //     books.splice(index, 1);
-  //     alert("Libro eliminado");
-  //   }
-  // } else {
-  //   alert("Libro no encontrado");
-  // }
-
-  //usando filter
-  let validarIsbn = searchIsbn(isbn);
-
-  if (validarIsbn.ok) {
-    let validar = confirm(
-      `Desea eliminar el libro ${validarIsbn.isBook.title}?`
-    );
+  if (index > -1) {
+    let validar = confirm(`Desea eliminar el libro ${books[index].title}?`);
     if (validar) {
-      let newArrayBooks = books.filter((book) => {
-        return book.isbn !== isbn;
-      });
-
-      books = [...newArrayBooks];
+      books.splice(index, 1);
+      alert("Libro eliminado");
     }
   } else {
-    alert(validarIsbn.msg);
+    alert("Libro no encontrado");
   }
 };
 
